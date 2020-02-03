@@ -18,8 +18,8 @@ import org.openjdk.jmh.annotations.{
 
 @State(Scope.Thread)
 // Setup number and length of iterations (for JVM warm-up and for actual measurement):
-@Warmup(iterations = 1, time = 1, timeUnit = TimeUnit.SECONDS)
-@Measurement(iterations = 1, time = 1, timeUnit = TimeUnit.SECONDS)
+@Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
+@Measurement(iterations = 10, time = 1, timeUnit = TimeUnit.SECONDS)
 // Different ways to sample result numbers:
 @BenchmarkMode(Array(Mode.AverageTime))
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
@@ -37,14 +37,22 @@ import org.openjdk.jmh.annotations.{
     "-Xss4M",
     "-XX:+UseG1GC",
     "-XX:+AlwaysPreTouch",
-    "-XX:FlightRecorderOptions=samplethreads=true,stackdepth=100",
   ),
 )
-//@Fork(jvmArgs = Array("-Xms8G", "-Xmx8G", "-Xss4M", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseEpsilonGC", "-XX:+AlwaysPreTouch"))
+//@Fork(
+//  jvmArgs = Array(
+//    "-Xms8G",
+//    "-Xmx8G",
+//    "-Xss4M",
+//    "-XX:+UnlockExperimentalVMOptions",
+//    "-XX:+UseEpsilonGC",
+//    "-XX:+AlwaysPreTouch",
+//  ),
+//)
 class FactorialBenchmark {
 
-//  @Param(Array("10", "100"/*, "1000", "10000"*/))
-  @Param(Array("10")) // For Epsilon GC - bigger numbers will use too much memory
+  @Param(Array("10", "100", "1000", "10000"))
+//  @Param(Array("10")) // For Epsilon GC - bigger numbers will use too much memory
   var arg: Int = _
 
 //  @Benchmark
