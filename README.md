@@ -3,7 +3,7 @@
 Run commands in SBT shell:
 
 - Run the benchmarks: `jmh:run`
-- Run with GC profiler: `jmh:run -prog gc`
+- Run with GC profiler: `jmh:run -prof gc`
 - It should also be possible to run with JDK Flight Recorder profiler (see
 [here](https://github.com/ktoso/sbt-jmh#using-oracle-flight-recorder), available
 on Oracle JDK, or on OpenJDK 11+) and read the profiling data with

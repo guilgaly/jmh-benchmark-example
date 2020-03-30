@@ -55,13 +55,13 @@ class FactorialBenchmark {
 //  @Param(Array("10")) // For Epsilon GC - bigger numbers will use too much memory
   var arg: Int = _
 
-//  @Benchmark
-  def factorialReduceBenchmark(): Unit = {
+  @Benchmark
+  def factorialReduceBenchmark(): BigInt = {
     FactorialReduce.factorial(arg)
   }
 
   @Benchmark
-  def factorialDivideAndConquerBenchmark(): Unit = {
+  def factorialDivideAndConquerBenchmark(): BigInt = {
     FactorialDivideAndConquer.factorial(arg)
   }
 }
